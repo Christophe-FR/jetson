@@ -1,5 +1,6 @@
 # jetson
 
+## remote control
 Follow https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit
 
 ```
@@ -22,3 +23,16 @@ sh vnc_server.sh
 ```
 
 Connect the jetson with VNC viewer (follow "Connecting to VNC service from another computer" on https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup)
+
+## Task scheduling
+To run a bash script at startup
+```
+chmod +x startup.sh
+sudo systemctl enable cron.service
+sudo systemctl status cron.service
+crontab -e
+```
+Add the following line at the end of the file:
+```
+@reboot /home/christophe/Desktop/startup.sh
+```
